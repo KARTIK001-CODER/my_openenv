@@ -1,0 +1,47 @@
+environment:
+  name: "AI Meeting Decision Intelligence"
+  version: "2.5.0"
+  description: "Executive-level evaluation for AI agents on transcript synthesis and priority extraction."
+
+action_schema:
+  type: object
+  properties:
+    summary:
+      type: string
+      minLength: 20
+    action_items:
+      type: array
+      items:
+        type: object
+        properties:
+          task:
+            type: string
+            minLength: 10
+          priority:
+            type: string
+            enum: ["High", "Medium", "Low"]
+        required: ["task", "priority"]
+  required: ["summary", "action_items"]
+
+observation_schema:
+  type: object
+  properties:
+    meeting_notes:
+      type: string
+    current_summary:
+      type: string
+    action_items:
+      type: array
+      items:
+        type: object
+    feedback:
+      type: string
+  required: ["meeting_notes", "current_summary", "action_items", "feedback"]
+
+tasks:
+  - id: "easy"
+    description: "Sync-up with a single clear directive."
+  - id: "medium"
+    description: "Multi-speaker project update with overlapping tasks."
+  - id: "hard"
+    description: "High-noise strategy session with crosstalk and irrelevant data."
