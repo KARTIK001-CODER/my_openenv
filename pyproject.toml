@@ -1,0 +1,15 @@
+[project]
+name = "meeting-decision-intelligence-env"
+version = "0.1.0"
+description = "OpenEnv environment for evaluating AI meeting summarization and decision intelligence"
+authors = [
+  { name = "Kartik" }
+]
+requires-python = ">=3.10"
+
+dependencies = [
+  "fastapi",
+  "uvicorn",
+  "openenv-core",
+  "openai"
+]
