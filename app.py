@@ -15,3 +15,7 @@ async def reset():
 @app.post("/step")
 async def step(action: dict = Body(...)):
     return env.step(action)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=7860)
