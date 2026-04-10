@@ -41,7 +41,10 @@ observation_schema:
 tasks:
   - id: "easy"
     description: "Sync-up with a single clear directive."
+    grader: true
   - id: "medium"
     description: "Multi-speaker project update with overlapping tasks."
+    grader: true
   - id: "hard"
     description: "High-noise strategy session with crosstalk and irrelevant data."
+    grader: true
