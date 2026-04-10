@@ -35,7 +35,12 @@ def compute_reward(summary: str, action_items: Any, expected_count: int) -> floa
     s1 = score_summary(summary)
     s2 = score_action_items(action_items, expected_count)
     s3 = score_quality_and_priorities(action_items)
-    return min(max(float(s1 + s2 + s3), 0.0), 1.0)
+    reward = float(s1 + s2 + s3)
+    if reward <= 0.0:
+        reward = 0.1
+    if reward >= 1.0:
+        reward = 0.95
+    return min(max(reward, 0.1), 0.95)
 
 def generate_feedback(summary: str, action_items: Any, expected_count: int) -> str:
     messages = []
